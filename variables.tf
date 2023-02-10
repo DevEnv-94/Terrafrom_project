@@ -17,3 +17,19 @@ variable "ssh_key_name" {
 variable "do_token" {
   type = string
 }
+
+variable "aws_access_key" {
+  type = string
+}
+
+variable "aws_secret_key" {
+  type = string
+}
+
+variable "dns_zone_name" {
+  type = string
+}
+
+variable "sub_domain" {
+  type = string
+}

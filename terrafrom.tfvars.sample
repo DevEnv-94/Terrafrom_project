@@ -7,3 +7,5 @@ aws_access_key       =
 aws_secret_key       = 
 dns_zone_name        =
 sub_domain           = 
+droplets_count       =
+domain_count         =

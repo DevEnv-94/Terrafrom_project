@@ -22,7 +22,7 @@ data "aws_route53_zone" "dns_zone" {
 
 resource "aws_route53_record" "domain" {
   zone_id = data.aws_route53_zone.dns_zone.zone_id
-  name    = "${var.sub_domain}"
+  name    = var.sub_domain
   type    = "A"
   ttl     = 300
   records = [local.droplet_public_ip]

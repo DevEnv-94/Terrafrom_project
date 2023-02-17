@@ -33,3 +33,11 @@ variable "dns_zone_name" {
 variable "sub_domain" {
   type = string
 }
+
+variable "droplets_count" {
+  type = string
+}
+
+variable "domain_count" {
+  type = string
+}

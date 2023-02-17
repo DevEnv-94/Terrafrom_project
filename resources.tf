@@ -8,8 +8,9 @@ resource "digitalocean_ssh_key" "ssh_key" {
 }
 
 resource "digitalocean_droplet" "droplet" {
+  count         = var.droplets_count
   image         = "ubuntu-20-04-x64"
-  name          = "node"
+  name          = "node-${count.index+1}"
   region        = "fra1"
   size          = "s-1vcpu-1gb"
   ssh_keys      = [digitalocean_ssh_key.ssh_key.fingerprint,data.digitalocean_ssh_key.rebrain_ssh_key.fingerprint]
@@ -21,9 +22,10 @@ data "aws_route53_zone" "dns_zone" {
 }
 
 resource "aws_route53_record" "domain" {
+  count   = var.domain_count
   zone_id = data.aws_route53_zone.dns_zone.zone_id
-  name    = var.sub_domain
+  name    = "${var.sub_domain}-${count.index+1}"
   type    = "A"
   ttl     = 300
-  records = [local.droplet_public_ip]
+  records = [local.droplets_public_ip[count.index]]
 }

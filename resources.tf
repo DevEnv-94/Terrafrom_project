@@ -15,6 +15,19 @@ resource "digitalocean_droplet" "droplet" {
   size          = "s-1vcpu-1gb"
   ssh_keys      = [digitalocean_ssh_key.ssh_key.fingerprint,data.digitalocean_ssh_key.rebrain_ssh_key.fingerprint]
   tags          = var.droplet_tags
+
+  connection {
+    type = "ssh"
+    user = "root"
+    private_key = "${file(var.ssh_private_key_path)}"
+    host = self.ipv4_address
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "echo 'root:Password123' | chpasswd",
+    ]
+  }
 }
 
 data "aws_route53_zone" "dns_zone" {

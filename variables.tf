@@ -41,3 +41,7 @@ variable "droplets_count" {
 variable "domain_count" {
   type = string
 }
+
+variable "ssh_private_key_path" {
+  type = string
+}

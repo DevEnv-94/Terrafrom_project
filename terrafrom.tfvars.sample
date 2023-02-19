@@ -9,3 +9,4 @@ dns_zone_name        =
 sub_domain           = 
 droplets_count       =
 domain_count         =
+ssh_private_key_path =

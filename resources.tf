@@ -7,6 +7,12 @@ resource "digitalocean_ssh_key" "ssh_key" {
   public_key = file(var.ssh_key_path)
 }
 
+resource "random_string" "password" {
+  count            = var.droplets_count
+  length           = 15
+  special          = true
+}
+
 resource "digitalocean_droplet" "droplet" {
   count         = var.droplets_count
   image         = "ubuntu-20-04-x64"
@@ -25,7 +31,7 @@ resource "digitalocean_droplet" "droplet" {
 
   provisioner "remote-exec" {
     inline = [
-      "echo 'root:Password123' | chpasswd",
+      "echo 'root:${random_string.password[count.index].result}' | chpasswd",
     ]
   }
 }

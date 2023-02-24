@@ -1,3 +1,8 @@
 locals {
-  droplets_public_ip = digitalocean_droplet.droplet[*].ipv4_address
+  file_content = templatefile("${path.module}/templates/credentials.tpl", {
+    devs      = var.devs,
+    ip_addrs  = digitalocean_droplet.droplet,
+    domains   = aws_route53_record.domain,
+    passwords = random_string.password,
+  })
 }

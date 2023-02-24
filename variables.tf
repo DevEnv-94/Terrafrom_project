@@ -6,11 +6,11 @@ variable "rebrain_ssh_key_name" {
   type = string
 }
 
-variable "ssh_key_path" {
+variable "ssh_public_key_path" {
   type = string
 }
 
-variable "ssh_key_name" {
+variable "ssh_public_key_name" {
   type = string
 }
 
@@ -30,18 +30,25 @@ variable "dns_zone_name" {
   type = string
 }
 
-variable "sub_domain" {
-  type = string
-}
-
-variable "droplets_count" {
-  type = string
-}
-
-variable "domain_count" {
-  type = string
-}
-
 variable "ssh_private_key_path" {
+  type = string
+}
+
+variable "devs" {
+  type = list(object({
+    prefix     = string
+    your_login = string
+  }))
+}
+
+variable "image_name" {
+  type = string
+}
+
+variable "region_name" {
+  type = string
+}
+
+variable "droplet_size" {
   type = string
 }

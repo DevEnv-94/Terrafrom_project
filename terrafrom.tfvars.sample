@@ -1,12 +1,24 @@
-do_token             = 
-ssh_key_path         = 
-ssh_key_name         = 
-rebrain_ssh_key_name = 
-dropet_tags          = 
-aws_access_key       = 
-aws_secret_key       = 
-dns_zone_name        =
-sub_domain           = 
-droplets_count       =
-domain_count         =
-ssh_private_key_path =
+-- After the hashtag symbol (#), you can find an example value of the variable.
+
+do_token             = ""
+ssh_public_key_path  = ""
+ssh_public_key_name  = ""
+rebrain_ssh_key_name = ""
+droplet_tags         = ["",""]
+aws_access_key       = ""
+aws_secret_key       = ""
+dns_zone_name        = ""
+ssh_private_key_path = ""
+image_name           =# "ubuntu-20-04-x64"
+region_name          =# "fra1"
+droplet_size         =# "s-1vcpu-1gb"
+devs                 =# [
+    {
+      prefix     = "db"
+      your_login = "Marty_McFly"
+    },
+    {
+      prefix     = "lb"
+      your_login = "Sarah_Connor"
+    }
+  ]

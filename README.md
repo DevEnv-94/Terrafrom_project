@@ -9,6 +9,8 @@ The purpose of this project is to gain hands-on experience with Terraform. It co
 2. Check the variables and define them in the terraform.tfvars.sample file. After the "#" symbol, you will find an example value for each variable. Create your own terraform.tfvars file with your own values.
 
 ```bash
+-- After the hashtag symbol (#), you can find an example value of the variable.
+
 do_token             = ""
 ssh_public_key_path  = ""
 ssh_public_key_name  = ""
